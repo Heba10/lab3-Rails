@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  # root to: 'pages#home'
   devise_for :users
   get 'welcome/index'
   
@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  
+  root to: 'welcome#index'
 end
