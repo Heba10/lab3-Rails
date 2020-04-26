@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-
+    load_and_authorize_resource
     http_basic_authenticate_with name: "heba", password: "123456", except: [:index, :show]
 #  before_action :authenticate_user!,except[:show, :index]
     def index
