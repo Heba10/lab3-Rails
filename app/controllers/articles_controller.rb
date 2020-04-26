@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
     http_basic_authenticate_with name: "heba", password: "123456", except: [:index, :show]
- 
+ before_action :authenticate_user!,except[:show, :index]
     def index
         @articles = Article.all
     end
@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
    
     def create
         @article = Article.new(article_params)
+        @article.user =current_user
     
         if @article.save
         redirect_to @article
